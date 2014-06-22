@@ -501,14 +501,14 @@ a.more-link:hover {
 }
 .hgroup-wrap {
 	padding-top: 15px;
-	padding-bottom: 35px;
+	padding-bottom: 0px;
 }
 .hgroup-wrap a {
 	display: block;
 }
 #site-logo {
 	float: left;
-	margin-top: 32px;
+	margin-top: 0px;
 }
 #site-title {
 	font: 36px 'Ubuntu', sans-serif;
