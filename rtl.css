@@ -1,6 +1,6 @@
 /*
 Theme Name: Travelify
-Theme URI: http://colorlib.com/wp/travelify/ 
+Theme URI: http://colorlib.com/wp/travelify/
 Description: Adding support for language written in a Right To Left (RTL) direction.
 */
 
@@ -22,15 +22,41 @@ ul.default-wp-page li.next {
 #footerarea .widget {
 	float: right;
 }
+.page-title {
+	float: right;
+}
 .entry-meta {
 	float: right;
+}
+.entry-meta a {
+	display: inline-block;
+}
+.entry-meta span {
+	display: inline-block;
+	padding-right: 0;
+	padding-left: 8px;
+}
+.entry-meta .author:before,
+.entry-meta .posted-on:before,
+.entry-meta .category:before,
+.entry-meta .comments:before,
+.tags:before,
+.back-to-top a:before {
+	padding-right: 0;
+	padding-right: 3px;
+}
+.tags a {
+	display: inline-block;	
 }
 #site-generator .copyright {
 	float: right;
 }
 .back-to-top {
-	left: 18px;
-	right: inherit;
+	left: inherit;
+	right: 18px;
+}
+.back-to-top a {
+	padding: 8px 8px 8px 6px;
 }
 .widget ul li {
 	background: none;
@@ -54,4 +80,19 @@ span.meta-nav {
 }
 #site-logo {
     float: right;
+}
+#footerarea .col-3:last-child {
+	margin-left: 0;
+}
+#footerarea .col-3:first-child {
+	margin-left: 2.5%;
+}
+#footerarea .col-3 {
+	float: right;
+}
+@media only screen and (max-width: 767px) {
+	#footerarea .col-3 {
+		float: none;
+		width: 100%;
+	}
 }

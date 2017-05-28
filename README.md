@@ -2,7 +2,7 @@
 
 ## Description
 
-Description: Travelify is a clan, simple and fully responsive WordPress WooCommerce theme that looks awesome on any device. It adjusts automatically to any screen size including tablets and smartphones as well as Retina displays. Theme is built using HTML5 / CSS3 and is SEO friendly. This WordPress theme was built with travel, adventures, languages and nature in mind but it can be used for anything so be creative and unleash its full potential in blogging, eCommerce, business and other websites. Along the awesome design this theme is customizable via a simple but yet powerful theme options. Some of the nicest features are featured post slider, social icons, custom logo, translation ready (compatible with WPML plugin) and many more. This theme out-of-the-box plays nicely with WooCommerce, Breadcrumb NavXT, WP-PageNavi, Contact Form 7, WPML and other popular plugins. Theme available in English, French, German, Hungarian, Italian, Spanish, Dutch, Hebrew, Slovak, Turkish, Swedish, Brazilian Portuguese, Polish, Finnish and Chinese.
+Description: Travelify is a clan, simple and fully responsive WordPress WooCommerce theme that looks awesome on any device. It adjusts automatically to any screen size including tablets and smartphones as well as Retina displays. Theme is built using HTML5 / CSS3 and is SEO friendly. This WordPress theme was built with travel, adventures, languages and nature in mind but it can be used for anything so be creative and unleash its full potential in blogging, eCommerce, business and other websites. Along the awesome design this theme is customizable via a simple but yet powerful theme options. Some of the nicest features are featured post slider, social icons, custom logo, translation ready (compatible with WPML plugin) and many more. This theme out-of-the-box plays nicely with WooCommerce, Breadcrumb NavXT, WP-PageNavi, Contact Form 7, WPML and other popular plugins. Theme available in English, French, German, Hungarian, Italian, Spanish, Dutch, Hebrew, Slovak, Turkish, Swedish, Brazilian Portuguese, Polish, Finnish, Bulgarian, Greek, Persian, Russian and Chinese.
 
 ## More info
 More about this theme you can find in the [following link](http://colorlib.com/wp/themes/travelify/).
@@ -17,7 +17,7 @@ Travelify preview [is available here](http://colorlib.com/travelify/)
 1. Download theme by using "Download zip" button on thr right side
 2. Upload the `travelify` folder to the `/wp-content/themes/` directory
 3. Activate the Theme through the Apperance - Themes menu in WordPress
-4. See Appearance -> Theme Options to change theme specific options
+4. See Appearance -> Customize  to change theme specific options
 
 #### Automated installation:
 
@@ -27,7 +27,7 @@ Travelify preview [is available here](http://colorlib.com/travelify/)
 
 ## Customization
 
-This theme has loads of customization options available via Appearance - Theme Options and via WordPress Customizer under Apperance - Customize. For more information about setup you can read **[Theme Documentationn](http://colorlib.com/wp/support/travelify/)**
+This theme has loads of customization options available via WordPress Customizer under Apperance - Customize. For more information about setup you can read **[Theme Documentationn](http://colorlib.com/wp/support/travelify/)**
 
 ## License
 
@@ -52,6 +52,65 @@ Unless otherwise specified, all the theme files, scripts and images are licensed
 
 
 ## Change Log
+
+**= 3.0.4 =**
+
+* Small bug fixes and improvements
+
+**= 3.0.3 =**
+* Added TGMPA
+
+**= 3.0.2 =**
+
+* Fixed problems with top navigation on mobile.
+
+**= 3.0.1 =**
+
+* Prepared theme for WordPress 4.4
+* Removed depractated wp_title fallback
+
+**= 3.0 =**
+
+* Removed Options Framework in favor to WordPress Customizer. This update might break Child Themes.
+* Other code cleanup
+
+**= 2.4.2 =**
+* Added Russian translation thanks to Evgeny
+
+**= 2.4.1 =**
+* Removed redundant sprintf from travelify_posted_on
+* Fixed numerous typos
+
+**= 2.4.0 =**
+* Improved markup to pass Schema tests and eliminate all errors in Google Webmaster Tools. Might be useful for SEO.
+* Improved RTL support
+* Minor code cleanup
+
+**= 2.3.3 =**
+- Added GitHub icon that you can set via Theme Options >> Social Links
+
+**= 2.3.2 =**
+
+- Added Greek translation thanks to Ecoengineer
+
+**= 2.3.1 =**
+- Added Persian (Farsi) translation thanks to Farzam Parto
+- Improved output from WordPress Theme Customizer
+- Removed changelog from readme.txt and now this is going to be the only place for changelog.
+
+**= 2.3.0 =**
+- Created sanitize callback for WordPress Customizer
+- Removed  add_shortcode functionality (plugin territory)
+- Escaped URLs where needed
+- Added support for title-tag as for WordPress 4.1
+- Some minor code cleanup
+
+**= 2.2.2 =**
+- Added Bulgarian translation thanks to Kaloyan Dimitrov
+
+**= 2.2.1 =**
+- Code cleanup
+- Updated Genericons to versions 3.3
 
 **= 2.2.0 =**
 - Added full WPML plugin support. We have also made it certified by WPML.

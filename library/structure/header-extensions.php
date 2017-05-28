@@ -6,77 +6,15 @@
 
 /****************************************************************************************/
 
-add_action( 'travelify_title', 'travelify_add_meta', 5 );
+add_action( 'wp_head', 'travelify_add_meta', 5 );
 /**
  * Add meta tags.
  */
 function travelify_add_meta() {
 ?>
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="<?php bloginfo( 'charset' ); ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <?php
-}
-
-/****************************************************************************************/
-
-add_action( 'travelify_title', 'travelify_show_title', 10 );
-/**
- * Showing the title in the browser tab.
- *
- * @uses wp_title() Display the title on the browser tab.
- */
-function travelify_show_title() {
-?>
-	<title>
-		<?php
-		/**
-		 * Print the <title> tag based on what is being viewed.
-		 */
-		wp_title( '|', true, 'right' );
-		?>
-	</title>
-<?php
-}
-
-add_filter( 'wp_title', 'travelify_filter_wp_title' );
-/**
- * Modifying the Title
- *
- * Function tied to the wp_title filter hook.
- * @uses filter wp_title
- */
-function travelify_filter_wp_title( $title ) {
-	global $page, $paged;
-
-	// Get the Site Name
-   $site_name = get_bloginfo( 'name' );
-
-   // Get the Site Description
-   $site_description = get_bloginfo( 'description' );
-
-   $filtered_title = '';
-
-	// For Homepage or Frontpage
-   if(  is_home() || is_front_page() ) {
-		$filtered_title .= $site_name;
-		if ( !empty( $site_description ) )  {
-        	$filtered_title .= ' &#124; '. $site_description;
-		}
-   }
-	elseif( is_feed() ) {
-		$filtered_title = '';
-	}
-	else{
-		$filtered_title = $title . $site_name;
-	}
-
-	// Add a page number if necessary:
-	if( $paged >= 2 || $page >= 2 ) {
-		$filtered_title .= ' &#124; ' . sprintf( __( 'Page %s', 'travelify' ), max( $paged, $page ) );
-	}
-
-	// Return the modified title
-   return $filtered_title;
 }
 
 /****************************************************************************************/
@@ -96,64 +34,6 @@ function travelify_add_links() {
 
 /****************************************************************************************/
 
-// Load Favicon in Header Section
-add_action( 'travelify_links', 'travelify_favicon', 15 );
-// Load Favicon in Admin Section
-add_action( 'admin_head', 'travelify_favicon' );
-/**
- * Get the favicon Image from theme options
- * display favicon
- *
- * @uses set_transient and delete_transient
- */
-function travelify_favicon() {
-
-	$travelify_favicon = '';
-	if( ( !$travelify_favicon = get_transient( 'travelify_favicon' ) ) ) {
-		global $travelify_theme_options_settings;
-      $options = $travelify_theme_options_settings;
-
-		if ( "0" == $options[ 'disable_favicon' ] ) {
-			if ( !empty( $options[ 'favicon' ] ) ) {
-				$travelify_favicon .= '<link rel="shortcut icon" href="'.esc_url( $options[ 'favicon' ] ).'" type="image/x-icon" />';
-			}
-		}
-
-	set_transient( 'travelify_favicon', $travelify_favicon, 86940 );
-	}
-	echo $travelify_favicon ;
-}
-
-/****************************************************************************************/
-
-// Load webpageicon in Header Section
-add_action( 'travelify_links', 'travelify_webpageicon', 20 );
-/**
- * Get the webpageicon Image from theme options
- * display webpageicon
- *
- * @uses set_transient and delete_transient
- */
-function travelify_webpageicon() {
-
-	$travelify_webpageicon = '';
-	if( ( !$travelify_webpageicon = get_transient( 'travelify_webpageicon' ) ) ) {
-		global $travelify_theme_options_settings;
-      $options = $travelify_theme_options_settings;
-
-		if ( "0" == $options[ 'disable_webpageicon' ] ) {
-			if ( !empty( $options[ 'webpageicon' ] ) ) {
-				$travelify_webpageicon .= '<link rel="apple-touch-icon-precomposed" href="'.esc_url( $options[ 'webpageicon' ] ).'" />';
-			}
-		}
-
-	set_transient( 'travelify_webpageicon', $travelify_webpageicon, 86940 );
-	}
-	echo $travelify_webpageicon ;
-}
-
-/****************************************************************************************/
-
 add_action( 'travelify_header', 'travelify_headerdetails', 10 );
 /**
  * Shows Header Part Content
@@ -167,18 +47,20 @@ function travelify_headerdetails() {
    	$options = $travelify_theme_options_settings;
 
    	$elements = array();
-		$elements = array( 	$options[ 'social_facebook' ],
-									$options[ 'social_twitter' ],
-									$options[ 'social_googleplus' ],
-									$options[ 'social_linkedin' ],
-									$options[ 'social_pinterest' ],
-									$options[ 'social_youtube' ],
-									$options[ 'social_vimeo' ],
-									$options[ 'social_flickr' ],
-									$options[ 'social_tumblr' ],
-									$options[ 'social_instagram' ],
-									$options[ 'social_rss' ]
-							 	);
+		$elements = array(
+			$options[ 'social_facebook' ],
+			$options[ 'social_twitter' ],
+			$options[ 'social_googleplus' ],
+			$options[ 'social_linkedin' ],
+			$options[ 'social_pinterest' ],
+			$options[ 'social_youtube' ],
+			$options[ 'social_vimeo' ],
+			$options[ 'social_flickr' ],
+			$options[ 'social_tumblr' ],
+			$options[ 'social_instagram' ],
+			$options[ 'social_rss' ],
+			$options[ 'social_github' ]
+		);
 
 		$flag = 0;
 		if( !empty( $elements ) ) {
@@ -262,6 +144,7 @@ function travelify_headerdetails() {
    				travelify_featured_post_slider();
    		}
    		}
+
 		else {
 			if( ( '' != travelify_header_title() ) || function_exists( 'bcn_display_list' ) ) {
 		?>
@@ -299,19 +182,20 @@ function travelify_socialnetworks( $flag ) {
 			<div class="social-icons clearfix">
 				<ul>';
 
-				$social_links = array();
-				$social_links = array( 	'Facebook' 		=> 'social_facebook',
-										'Twitter' 		=> 'social_twitter',
-										'Google-Plus'	=> 'social_googleplus',
-										'Pinterest' 	=> 'social_pinterest',
-										'YouTube'		=> 'social_youtube',
-										'Vimeo'			=> 'social_vimeo',
-										'LinkedIn'		=> 'social_linkedin',
-										'Flickr'		=> 'social_flickr',
-										'Tumblr'		=> 'social_tumblr',
-										'Instagram'		=> 'social_instagram',
-										'RSS'			=> 'social_rss'
-									);
+				$social_links = array(
+					'Facebook'    => 'social_facebook',
+					'Twitter'     => 'social_twitter',
+					'Google-Plus' => 'social_googleplus',
+					'Pinterest'   => 'social_pinterest',
+					'YouTube'     => 'social_youtube',
+					'Vimeo'       => 'social_vimeo',
+					'LinkedIn'    => 'social_linkedin',
+					'Flickr'      => 'social_flickr',
+					'Tumblr'      => 'social_tumblr',
+					'Instagram'   => 'social_instagram',
+					'RSS'         => 'social_rss',
+					'GitHub'      => 'social_github'
+				);
 
 				foreach( $social_links as $key => $value ) {
 					if ( !empty( $options[ $value ] ) ) {

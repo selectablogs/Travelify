@@ -2,7 +2,7 @@
 /**
  * Travelify functions and definitions
  *
- * This file contains all the functions and it's defination that particularly can't be
+ * This file contains all the functions and it's definition that particularly can't be
  * in other files.
  *
  */
@@ -16,7 +16,7 @@ add_action( 'wp_enqueue_scripts', 'travelify_scripts_styles_method' );
 function travelify_scripts_styles_method() {
 
 	global $travelify_theme_options_settings;
-   $options = $travelify_theme_options_settings;
+	$options = $travelify_theme_options_settings;
 
    /**
 	 * Loads our main stylesheet.
@@ -40,7 +40,7 @@ function travelify_scripts_styles_method() {
 	 */
 	wp_register_script( 'jquery_cycle', get_template_directory_uri() . '/library/js/jquery.cycle.all.min.js', array( 'jquery' ), '2.9999.5', true );
 
-  wp_register_style( 'google_font_ubuntu', '//fonts.googleapis.com/css?family=Ubuntu' );
+	wp_register_style( 'google_font_ubuntu', '//fonts.googleapis.com/css?family=Ubuntu' );
 
 
 	/**
@@ -51,9 +51,9 @@ function travelify_scripts_styles_method() {
 		wp_enqueue_script( 'travelify_slider', get_template_directory_uri() . '/library/js/slider-settings.min.js', array( 'jquery_cycle' ), false, true );
 	}
 
-  wp_enqueue_script( 'theme_functions', get_template_directory_uri() . '/library/js/functions.min.js', array( 'jquery' ) );
+	wp_enqueue_script( 'theme_functions', get_template_directory_uri() . '/library/js/functions.min.js', array( 'jquery' ) );
 
-  wp_enqueue_style( 'google_font_ubuntu' );
+	wp_enqueue_style( 'google_font_ubuntu' );
 
    /**
     * Browser specific queuing i.e
@@ -92,16 +92,16 @@ function travelify_pass_cycle_parameters() {
     global $travelify_theme_options_settings;
     $options = $travelify_theme_options_settings;
 
-    $transition_effect = $options[ 'transition_effect' ];
-    $transition_delay = $options[ 'transition_delay' ] * 1000;
-    $transition_duration = $options[ 'transition_duration' ] * 1000;
+		$transition_effect   = $options[ 'transition_effect' ];
+		$transition_delay    = $options[ 'transition_delay' ] * 1000;
+		$transition_duration = $options[ 'transition_duration' ] * 1000;
     wp_localize_script(
         'travelify_slider',
         'travelify_slider_value',
         array(
-            'transition_effect' => $transition_effect,
-            'transition_delay' => $transition_delay,
-            'transition_duration' => $transition_duration
+						'transition_effect'   => $transition_effect,
+						'transition_delay'    => $transition_delay,
+						'transition_duration' => $transition_duration
         )
     );
 
@@ -263,55 +263,6 @@ function travelify_alter_home( $query ){
 	}
 }
 
-/*************************************************************************************/
-
-add_action('wp_head', 'travelify_check_background_color');
-/**
- * Checking if background color is empty
- * If the background color is not empty background-image should be set to none
- * else background color will be not displayed in the site.
- */
-function travelify_check_background_color() {
-
-	$background_color = esc_attr(get_background_color());
-			if ( $background_color != "" ) {
-				$travelify_css  = '<!-- '.get_bloginfo('name').' Custom CSS Styles -->' . "\n";
-		      $travelify_css .= '<style type="text/css" media="screen">' . "\n";
-				$travelify_css .= 'body { background-image: none; }' . "\n";
-				$travelify_css .= '</style>' . "\n";
-			}
-	if( isset( $travelify_css ) ) {
-		echo $travelify_css;
-	}
-}
-
-/**************************************************************************************/
-
-add_filter( 'wp_nav_menu_items', 'travelify_nav_menu_alter', 10, 2 );
-/**
-* Add default navigation menu to nav menu
-* Used while viewing on smaller screen
-*/
-if ( !function_exists('travelify_nav_menu_alter') ) {
-	function travelify_nav_menu_alter( $items, $args ) {
-		$items .= '<li class="default-menu"><a href="'.get_bloginfo('url').'" title="Navigation">'.__( 'Navigation','travelify' ).'</a></li>';
-		return $items;
-	}
-}
-
-/****************************************************************************************/
-
-add_filter( 'wp_list_pages', 'travelify_page_menu_alter' );
-/**
- * Add default navigation menu to page menu
- * Used while viewing on smaller screen
- */
-if ( !function_exists('travelify_page_menu_alter') ) {
-	function travelify_page_menu_alter( $output ) {
-		$output .= '<li class="default-menu"><a href="'.get_bloginfo('url').'" title="Navigation">'.__( 'Navigation','travelify' ).'</a></li>';
-		return $output;
-	}
-}
 
 /****************************************************************************************/
 
@@ -322,7 +273,7 @@ add_filter('wp_page_menu', 'travelify_wp_page_menu_filter');
 if ( !function_exists('travelify_wp_page_menu_filter') ) {
 	function travelify_wp_page_menu_filter( $text ) {
 		$replace = array(
-			'current_page_item'     => 'current-menu-item'
+			'current_page_item' => 'current-menu-item'
 	 	);
 
 	  $text = str_replace(array_keys($replace), $replace, $text);
@@ -360,35 +311,35 @@ function travelify_widgets_init() {
 
 	// Registering main left sidebar
 	register_sidebar( array(
-		'name' 				=> __( 'Left Sidebar', 'travelify' ),
-		'id' 					=> 'travelify_left_sidebar',
-		'description'   	=> __( 'Shows widgets at Left side.', 'travelify' ),
-		'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  	=> '</aside>',
-		'before_title'  	=> '<h3 class="widget-title">',
-		'after_title'   	=> '</h3>'
+		'name'          => __( 'Left Sidebar', 'travelify' ),
+		'id'            => 'travelify_left_sidebar',
+		'description'   => __( 'Shows widgets at Left side.', 'travelify' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>'
 	) );
 
 	// Registering main right sidebar
 	register_sidebar( array(
-		'name' 				=> __( 'Right Sidebar', 'travelify' ),
-		'id' 					=> 'travelify_right_sidebar',
-		'description'   	=> __( 'Shows widgets at Right side.', 'travelify' ),
-		'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  	=> '</aside>',
-		'before_title'  	=> '<h3 class="widget-title">',
-		'after_title'   	=> '</h3>'
+		'name'          => __( 'Right Sidebar', 'travelify' ),
+		'id'            => 'travelify_right_sidebar',
+		'description'   => __( 'Shows widgets at Right side.', 'travelify' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>'
 	) );
 
 	// Registering footer widgets
 	register_sidebar( array(
-		'name' 				=> __( 'Footer', 'travelify' ),
-		'id' 					=> 'travelify_footer_widget',
-		'description'   	=> __( 'Shows widgets at footer.', 'travelify' ),
-		'before_widget' 	=> '<div class="col-3"><aside id="%1$s" class="widget %2$s">',
-		'after_widget'  	=> '</aside></div>',
-		'before_title'  	=> '<h3 class="widget-title">',
-		'after_title'   	=> '</h3>'
+		'name'          => __( 'Footer', 'travelify' ),
+		'id'            => 'travelify_footer_widget',
+		'description'   => __( 'Shows widgets at footer.', 'travelify' ),
+		'before_widget' => '<div class="col-3"><aside id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</aside></div>',
+		'before_title'  => '<h3 class="widget-title">',
+		'after_title'   => '</h3>'
 		)
 	);
 }
@@ -421,7 +372,7 @@ add_action( 'widgets_init', 'travelify_widgets_init' );
 		'random-default'         => false,
 
 		// No Header Text Feature
-		'header-text'				 => false,
+		'header-text'            => false,
 
 		// Callbacks for styling the header and the admin preview.
 		'wp-head-callback'       => '',
@@ -464,28 +415,27 @@ function travelify_admin_header_image() {
 
 <?php }
 
-/****************************************************************************************/
 
-add_action('wp_head', 'travelify_headercode');
+if ( ! function_exists( 'travelify_posted_on' ) ) :
 /**
- * Custom header scripts
+ * Prints HTML with meta information for the current post-date/time and author.
  */
-function travelify_headercode() {
-
-   $travelify_headercode = '';
-	if ( ( !$travelify_headercode = get_transient( 'travelify_headercode' ) )  ) {
-
-		global $travelify_theme_options_settings;
-		$options = $travelify_theme_options_settings;
-
-		// custom scripts header code
-		if ( !empty( $options['customscripts_header'] ) ) {
-		$travelify_headercode .=  $options[ 'customscripts_header' ] ;
-		}
-
-		set_transient( 'travelify_headercode', $travelify_headercode, 86940 );
+function travelify_posted_on() {
+	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 	}
-	echo $travelify_headercode;
+	$time_string = sprintf( $time_string,
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date() ),
+		esc_attr( get_the_modified_date( 'c' ) ),
+		esc_html( get_the_modified_date() )
+	);
+	$byline = sprintf(
+		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+	);
+	echo '<span class="byline"> ' . $byline . '</span><span class="posted-on">' . '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>' . '</span>';
 }
+endif;
 
 ?>
